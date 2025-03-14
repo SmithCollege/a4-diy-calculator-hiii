@@ -35,14 +35,13 @@ public class Infix {
         while (!tokens.isEmpty()) {
             Object token = tokens.removeFirst();
             ArrayDeque<Object> parsedTokens = Tokenizer.readTokens(token.toString());
-            Object parsedToken = token;
 
-            if (parsedToken instanceof Double) {
-                queue.addLast(parsedToken);
-            }else if(parsedToken instanceof Character){
-                if ((Character) parsedToken =='(') { // if it's an opening bracket, push it to stack
-                    stack.push(parsedToken);
-                }else if ((Character) parsedToken == ')') { // if it's a closing bracket, push it to queue and pop it from stack. close brackets until there's no matching opening bracket left
+            if (token instanceof Double) {
+                queue.addLast(token);
+            }else if(token instanceof Character){
+                if ((Character) token =='(') { // if it's an opening bracket, push it to stack
+                    stack.push(token);
+                }else if ((Character) token == ')') { // if it's a closing bracket, push it to queue and pop it from stack. close brackets until there's no matching opening bracket left
                     while (!stack.isEmpty() && (Character) stack.peek() != '(') {
                         queue.add(stack.pop());
                     }
@@ -54,15 +53,15 @@ public class Infix {
                 }else{
                     while (!stack.isEmpty() && stack.peek() instanceof Character){ // if we're parsing an operator
                         char top = (Character) stack.peek();
-                        if (getPrecedence(top) > getPrecedence((Character) parsedToken) ||
-                                (getPrecedence(top) == getPrecedence((Character) parsedToken) && (Character) parsedToken != '^')) { // to ensure right associativity of the ^ operator
+                        if (getPrecedence(top) > getPrecedence((Character) token) ||
+                                (getPrecedence(top) == getPrecedence((Character) token) && (Character) token != '^')) { // to ensure right associativity of the ^ operator
                             queue.add(stack.pop());
 
                         }else{
                             break;
                         }
                     }
-                    stack.push(parsedToken);
+                    stack.push(token);
                 }
             }
         }
