@@ -8,7 +8,7 @@ Group Member Name(s): Melissa Mugisha Kabalisa
 
 Other collaborators you worked with, including TAs (and feel free to give a shoutout to anyone who was particularly helpful):
 
-Any references used besides JavaDoc and course materials: Wikipedia's Shunting Yard page
+Any references used besides JavaDoc and course materials: Wikipedia's Shunting Yard page and Geeks4Geeks explanation of InfixToPostfix
 
 Reflection on your experience with this assignment: It was tough to think about theoretically, but thinking about it visually helped me figure it out (using actual objects, writing etc).
 

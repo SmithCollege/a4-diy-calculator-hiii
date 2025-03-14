@@ -6,7 +6,7 @@ public class Postfix {
 
     /**
      * @param tokens
-     * @return result of operations that are in postfix form
+     * @return result of operations in postfix form
      */
     public static Double postfix(ArrayDeque<Object> tokens) {
         Double num1, num2;
@@ -28,7 +28,7 @@ public class Postfix {
                     operator = (Character) token;
                     double result;
 
-                    // ! since it's a stack num1 is actually the 2nd operand
+                    // ! since it's a stack, num1 is actually the 2nd operand
                     switch (operator) {
                         case '+':
                             result = num2 + num1;
@@ -63,7 +63,7 @@ public class Postfix {
         // at this point the stack should only have 1 element: the result
 
         if (stack.size()>1) {
-            throw new IllegalArgumentException("Too many operands or too few operators");
+            throw new IllegalArgumentException("Invalid postfix expression: mismatched operators and operands.");
         }else{
             return (Double) stack.pop(); // return the result
         }
